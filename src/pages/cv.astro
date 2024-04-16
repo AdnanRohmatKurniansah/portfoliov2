@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+
+const educations = [
+  {
+    title: "SDN BECARI",
+    subtitle: "2012 to 2018, Bantul, DIY"
+  },
+  {
+    title: "SMPN 1 PUNDONG",
+    subtitle: "2018 to 2021, Bantul, DIY"
+  },
+  {
+    title: "SMKN 1 BANTUL",
+    subtitle: "2021 to 2024, Bantul, DIY"
+  }
+];
+
+
+const experiences = [
+  {
+    title: "Junior Developer at CV. Jogja Media Web",
+    subtitle: "From March to September 2023, Sleman, DIY",
+    description: [
+      "Building company profile, personal branding and e-commerce websites using Laravel.",
+      "Write articles to be published on a Jogja tourism website."
+    ]
+  }
+];
+
+const certifications = [
+  {
+    title: "Belajar Dasar Pemrograman JavaScript",
+    link: "https://www.dicoding.com/certificates/JMZV1N0WQXN9"
+  },
+  {
+    title: "Belajar Membuat Aplikasi Web dengan React",
+    link: "https://www.dicoding.com/certificates/JMZV19V0QXN9"
+  },
+  {
+    title: "Belajar Membuat Front-End Web untuk Pemula",
+    link: "https://www.dicoding.com/certificates/GRX5298Y2X0M"
+  }
+];
+
+const skills = ['Php', 'Javascript', 'Typescript', 'Laravel', 'Codeigniter', 'Nextjs', 'Nodejs', 'MySql', 'PostgreSql', 'MongoDB', 'Bootstrap', 'TailwindCss']
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Profile</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Hi, I'm Adnan Rohmat Kurniansah, a Software Engineer with expertise in web development. Currently, I can work as a Back-end Developer or Front-End Developer. I am a creative problem solver with a passion for building intuitive, user-friendly products that enhance the user experience.
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    {
+      educations.map((education, i) => (
+        <TimeLineElement
+          key={i}
+          title={education.title}
+          subtitle={education.subtitle}
+        />
+      ))
+    }
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    {experiences.map((experience, i) => (
+      <TimeLineElement
+        key={i}
+        title={experience.title}
+        subtitle={experience.subtitle}
+      >
+        <ul>
+          {experience.description.map((item, i) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </TimeLineElement>
+    ))}
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Certifications</div>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    {certifications.map((certification, i) => (
+      <li>
+        <a href={certification.link} target="_blank">{certification.title}</a>
+      </li>
+    ))}
+  </ul>
+
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6">
+    {skills.map((skill, i) => (
+      <li>{skill}</li>
+    ))}
+  </ul>
+</BaseLayout>

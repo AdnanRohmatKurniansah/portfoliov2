@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+
+const projects = [
+  {
+    title: "Fosi",
+    img: "/projects/fosi.png",
+    desc: "An online platform that offers discussion forums aimed at facilitating the exchange of knowledge and solutions related to programming problems",
+    url: "https://fosi.vercel.app"
+  },
+  {
+    title: "Digital Library",
+    img: "/projects/digital-library.png",
+    desc: "A digital library is an online platform that provides instant access to a wide collection of digital books, journals and other educational resources. Users can browse and read materials electronically",
+    url: "https://digital-library-xi.vercel.app"
+  },
+  {
+    title: "Imaginemate",
+    img: "/projects/imaginemate.png",
+    desc: "Explore a collection of imaginative and visually stunning images created by IMATE. Share your boundless imagination and artistic flair with others",
+    url: "https://imatesite.vercel.app"
+  },
+  {
+    title: "Tic Tac Toe Game",
+    img: "/projects/tic-tac-toe.png",
+    desc: "The “Tic Tac Toe Game” website is an online platform that provides a digital version of the classic game Tic Tac Toe, also known as X and O",
+    url: "https://tic-tac-toe-gray-xi.vercel.app"
+  },
+]
+
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">I'm Adnan Rohmat Kurniansah</div>
+    <div class="text-3xl py-3 font-bold">Fullstack developer and Student</div>
+    <div class="py-2">
+      <text class="text-lg">
+        My expertise lies in web development and I have a understanding of both front-end and back-end technologies. I have a deep interest in technology and it drives me to constantly seeking opportunities to expand my knowledge and improve my skills.
+      </text>
+    </div>
+    <div class="mt-8">
+      <a class="btn" href="https://www.linkedin.com/in/adnan-rohmat-kurniansah-41576827a/" target="_blank"> Let's connect!</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+  </div>
+
+  {projects.map((project, i) => (
+    <HorizontalCard
+      key={i}
+      title={project.title}
+      img={project.img}
+      desc={project.desc}
+      url={project.url}
+      target="_blank"
+    />
+    <div class="divider my-0"></div>
+  ))}
+  
+  <h1 class="pt-8 text-lg">See more projects in <a class="text-blue-600" href="https://github.com/AdnanRohmatKurniansah" target="_blank">my github</a></h1>
+  
+</BaseLayout>
