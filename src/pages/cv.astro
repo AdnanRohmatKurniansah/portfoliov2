@@ -20,11 +20,18 @@ const educations = [
 
 const experiences = [
   {
-    title: "Junior Developer at CV. Jogja Media Web",
+    title: "Intern Web Developer at CV. Jogja Media Web",
     subtitle: "From March to September 2023, Sleman, DIY",
     description: [
       "Building company profile, digital marketing and e-commerce websites using Laravel.",
       "Write articles to be published on a Jogja tourism website."
+    ]
+  },
+  {
+    title: "Web Developer at CV. Jogja Media Web",
+    subtitle: "From May 2024 to February 2025, Sleman, DIY",
+    description: [
+      "Creating information systems, converting Canva designs into responsive websites, fixing bugs, and redesigning websites for better performance and user experience."
     ]
   }
 ];
@@ -83,7 +90,7 @@ const skills = ['Php', 'Javascript', 'Typescript', 'Laravel', 'Codeigniter', 'Ne
         title={experience.title}
         subtitle={experience.subtitle}
       >
-        <ul>
+        <ul class="mb-5">
           {experience.description.map((item, i) => (
             <li>{item}</li>
           ))}
