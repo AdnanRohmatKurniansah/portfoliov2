@@ -1,5 +1,5 @@
 ---
-const { title, img, desc, url = "_blank" } = Astro.props;
+const { title, img, desc, url, tags = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
 ---
 
@@ -24,7 +24,17 @@ import { Image } from "astro:assets";
         <h1 class="text-xl font-bold">
           {title}
         </h1>
-        <p class="py-1 text-1xl">{desc}</p>
+        <p class="py-1 text-1xl mb-2">{desc}</p>
+        <div class="card-actions justify-end">
+          {
+            tags &&
+              tags.map((tag) => (
+                <a class="badge badge-outline">
+                  {tag}
+                </a>
+              ))
+          }
+        </div>
       </div>
     </div>
   </a>
