@@ -1,0 +1,44 @@
+:root {
+  /* Default: Dark theme */
+  --bg-primary: #0a0a0f;
+  --bg-surface: #111827;
+  --card: #1a1f2e; /* or rgba(255,255,255,0.05) for glassmorphism */
+  --text-primary: #e2e8f0;
+  --accent: #06b6d4;       /* cyan */
+  --accent-alt: #a855f7;   /* purple */
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] {
+  --bg-primary: #0a0a0f;
+  --bg-surface: #111827;
+  --card: #1a1f2e;
+  --text-primary: #e2e8f0;
+  --accent: #06b6d4;
+  --accent-alt: #a855f7;
+  --border: rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg-primary: #f0f4ff;
+  --bg-surface: #ffffff;
+  --card: #ffffff;
+  --text-primary: #0f172a;
+  --accent: #0891b2;
+  --accent-alt: #7c3aed;
+  --border: rgba(0, 0, 0, 0.1);
+  color-scheme: light;
+}
+
+/* Color transition definition */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Monospace fonts for technical/code components */
+.font-mono-technical {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}

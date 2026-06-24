@@ -1,84 +1,46 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-
-const projects = [
-  {
-    title: "Litera",
-    img: "/projects/litera.png",
-    desc: "Litera is a trusted Indonesian online bookstore offering educational books, novels, children's titles, and the latest releases at affordable prices.",
-    url: "https://litera-hazel.vercel.app/",
-    tags: ['React.js', 'Express.js', 'Typescript' , 'MongoDB', 'Tailwind', 'Shadcn', 'Midtrans']
-  },
-  {
-    title: "FindEra",
-    img: "/projects/findera.png",
-    desc: "FindEra is a community-powered lost and found platform that lets users report, discover, and claim items quickly through a real-time interactive map — secure, fast, and easy to use.",
-    url: "https://findera-vert.vercel.app/",
-    tags: ['Next.js', 'Typescript' , 'Supabase', 'Tailwind', 'Leaflet']
-  },
-  {
-    title: "ExploreEase",
-    img: "/projects/exploreease.png",
-    desc: "ExploreEase is a modern travel booking platform offering curated tour packages, real-time booking, dynamic pricing, secure Midtrans payment, and user-friendly experience.",
-    url: "https://explore-ease-three.vercel.app/",
-    tags: ['Next.js', 'Typescript' , 'MongoDB', 'Tailwind', 'Midtrans']
-  },
-  {
-    title: "Arki",
-    img: "/projects/arki.png",
-    desc: "Arki is a centralized platform for Indonesia’s boarding house community, featuring a trusted database of technicians, suppliers, and a blacklist to help users avoid fraud and unreliable services.",
-    url: "https://arki.or.id/",
-    tags: ['PHP', 'Mysql', 'Jquery', 'Bootstrap']
-  },
-  {
-    title: "Konten Digital",
-    img: "/projects/kontendigital.png",
-    desc: "Konten Digital is a digital marketing platform offering services like press releases, media backlinks, press conferences, article writing, scriptwriting, and content creator training to enhance brand visibility with impactful content.",
-    url: "https://kontendigital.id/",
-    tags: ['PHP', 'Mysql', 'Jquery', 'Bootstrap']
-  },
-  {
-    title: "Starrising Mart",
-    img: "/projects/starrising.png",
-    desc: "Starrising Mart is an online store offering food, personal care, baby needs, and household essentials for a convenient everyday shopping experience.",
-    url: "https://starrisingmart.com/",
-    tags: ['PHP', 'Mysql', 'Jquery', 'Bootstrap']
-  },
-  {
-    title: "Imaginemate",
-    img: "/projects/imaginemate.png",
-    desc: "Explore a collection of imaginative and visually stunning images created by IMATE. Share your boundless imagination and artistic flair with others",
-    url: "https://imatesite.vercel.app",
-    tags: ['React', 'MongoDB', 'Nodejs', 'Tailwind']
-  },
-  {
-    title: "Tic Tac Toe Game",
-    img: "/projects/tic-tac-toe.png",
-    desc: "The “Tic Tac Toe Game” website is an online platform that provides a digital version of the classic game Tic Tac Toe, also known as X and O",
-    url: "https://tic-tac-toe-gray-xi.vercel.app",
-    tags: ['React']
-  },
-]
+import Layout from "../layouts/Layout.astro";
+import ProjectsGrid from "../components/ui/ProjectsGrid.jsx";
 ---
 
-<BaseLayout title = "Projects" sideBarActiveItemID="projects">
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Latest Projects</div>
-  </div>
+<Layout
+  title="Projects | Adnan Rohmat Kurniansah"
+  description="Fullstack web applications, platforms, and tools built by Adnan Rohmat Kurniansah."
+  sideBarActiveItemID="projects"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 md:py-32">
 
-  {projects.map((project, i) => (
-    <HorizontalCard
-      key={i}
-      title={project.title}
-      img={project.img}
-      desc={project.desc}
-      url={project.url}
-      target="_blank"
-      tags={project.tags}
-    />
-    <div class="divider my-0"></div>
-  ))}
-  
-  <h1 class="pt-8 text-lg">See more projects in <a class="text-blue-600" href="https://github.com/AdnanRohmatKurniansah" target="_blank">my github</a></h1>
-</BaseLayout>
+    <div class="mb-16 md:mb-20">
+      <div class="eyebrow mb-4">All Work</div>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <h1 class="section-heading text-[var(--text-primary)] max-w-xl">
+          Everything I've<br />
+          <span class="gradient-text">built and shipped.</span>
+        </h1>
+        <p class="text-sm text-[var(--text-primary)]/55 max-w-sm leading-relaxed md:text-right">
+          A collection of real projects — client work, open-source tools, and personal builds.
+        </p>
+      </div>
+    </div>
+
+    <ProjectsGrid client:load limit={100}/>
+
+    <div class="mt-16 pt-10 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-[var(--text-primary)]/50 font-mono-technical">
+        // More repositories and experiments on GitHub
+      </p>
+      <a
+        href="https://github.com/AdnanRohmatKurniansah"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="interactive inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[var(--border)] text-sm font-medium text-[var(--text-primary)]/70 hover:text-[var(--text-primary)] hover:border-[var(--text-primary)]/30 hover:bg-[var(--border)] transition-all duration-200"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        View GitHub profile
+      </a>
+    </div>
+
+  </div>
+</Layout>

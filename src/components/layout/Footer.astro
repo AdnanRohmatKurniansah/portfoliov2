@@ -1,0 +1,115 @@
+---
+const today = new Date();
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'CV / Resume', href: '/cv' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const services = [
+  { label: 'Frontend Development', href: '/contact' },
+  { label: 'Backend & API', href: '/contact' },
+  { label: 'Full-Stack Web Apps', href: '/contact' },
+  { label: 'UI/UX Implementation', href: '/contact' },
+];
+
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/AdnanRohmatKurniansah' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adnan-rohmat-kurniansah-41576827a/' },
+  { label: 'Instagram', href: 'https://www.instagram.com/adn.rk_/' },
+  { label: 'Email', href: 'mailto:atnandimas@gmail.com' },
+];
+---
+
+<footer class="border-t border-[var(--border)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+      <div class="flex flex-col gap-6 lg:col-span-1">
+        <div class="flex flex-col gap-3">
+          <a href="/"
+            class="text-2xl md:text-3xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 w-fit"
+            aria-label="Arksitec home">
+            Ark<span class="text-[var(--text-primary)]/50">sitec.</span>
+          </a>
+          <p class="text-md text-[var(--text-primary)]/50 leading-relaxed">
+            Fullstack developer building scalable, production-ready web applications from concept to deployment.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="availability-dot w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+          <span class="text-md text-emerald-400/80 font-medium">Available for projects</span>
+        </div>
+        <a
+          href="/contact"
+          class="interactive w-fit inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-85 transition-all duration-200 hover:-translate-y-px"
+        >
+          Hire Me
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1 7h12M7 1l6 6-6 6"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <p class="text-md font-bold uppercase tracking-widest text-[var(--text-primary)]/30 font-mono-technical">Navigation</p>
+        <nav class="flex flex-col gap-3">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class="text-md text-[var(--text-primary)]/60 hover:text-[var(--text-primary)] transition-colors duration-200 w-fit"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <p class="text-md font-bold uppercase tracking-widest text-[var(--text-primary)]/30 font-mono-technical">Services</p>
+        <nav class="flex flex-col gap-3">
+          {services.map(link => (
+            <a
+              href={link.href}
+              class="text-md text-[var(--text-primary)]/60 hover:text-[var(--text-primary)] transition-colors duration-200 w-fit"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <p class="text-md font-bold uppercase tracking-widest text-[var(--text-primary)]/30 font-mono-technical">Connect</p>
+        <nav class="flex flex-col gap-3">
+          {socialLinks.map(link => (
+            <a
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              class="interactive text-md text-[var(--text-primary)]/60 hover:text-[var(--accent)] transition-colors duration-200 w-fit inline-flex items-center gap-1.5 group"
+            >
+              {link.label}
+              {link.href.startsWith('http') && (
+                <svg
+                  width="11" height="11" viewBox="0 0 10 10" fill="none"
+                  stroke="currentColor" stroke-width="1.5"
+                  class="opacity-0 group-hover:opacity-60 transition-opacity"
+                  aria-hidden="true"
+                >
+                  <path d="M1 9L9 1M9 1H3M9 1v6"/>
+                </svg>
+              )}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+    <div class="border-t border-[var(--border)] py-6 flex flex-col sm:flex-row items-center justify-center">
+      <p class="text-[12px] md:text-sm text-[var(--text-primary)]/35">
+        &copy; {today.getFullYear()} Adnan Rohmat Kurniansah. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

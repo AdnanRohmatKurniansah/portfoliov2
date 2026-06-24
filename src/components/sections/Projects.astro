@@ -1,0 +1,46 @@
+---
+import ProjectsGrid from '../ui/ProjectsGrid.jsx';
+---
+
+<section id="projects" class="py-16 md:py-32 border-t border-[var(--border)] scroll-mt-20 relative overflow-hidden">
+  <div class="deco-corner-tl hidden lg:block" aria-hidden="true"></div>
+  <div class="deco-corner-br hidden lg:block" aria-hidden="true"></div>
+
+  <div class="absolute hidden lg:block pointer-events-none" style="top:3.8rem;right:2.5rem;" aria-hidden="true">
+    <div class="deco-diamond" style="width:10px;height:10px;position:relative;animation-delay:0s;"></div>
+  </div>
+  <div class="absolute hidden lg:block pointer-events-none" style="top:3.2rem;right:4rem;" aria-hidden="true">
+    <div class="deco-diamond-alt" style="width:6px;height:6px;position:relative;animation-delay:0.8s;"></div>
+  </div>
+  <div class="absolute hidden lg:block pointer-events-none" style="top:5rem;right:3.8rem;" aria-hidden="true">
+    <div class="deco-pulse-dot" style="width:3px;height:3px;position:relative;animation-delay:1.4s;"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 md:mb-20">
+      <div class="eyebrow mb-4">Selected Work</div>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <h2 class="section-heading text-[var(--text-primary)] max-w-xl">
+          Projects I've built<br />
+          <span class="gradient-text">and shipped.</span>
+        </h2>
+        <div class="flex flex-col gap-3 md:text-right md:items-end">
+          <p class="text-base md:text-lg text-[var(--text-primary)]/55 max-w-xs leading-relaxed">
+            Fullstack web applications, platforms, and tools — built for real users and real problems.
+          </p>
+          <a
+            href="/projects"
+            class="interactive inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent)] hover:text-[var(--accent-alt)] transition-colors duration-200 group w-fit md:self-end"
+          >
+            View all projects
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M1 7h12M7 1l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <ProjectsGrid client:visible limit={9} />
+  </div>
+</section>

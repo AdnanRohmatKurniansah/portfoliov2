@@ -1,0 +1,177 @@
+---
+const services = [
+  {
+    number: '01',
+    title: 'Frontend Development',
+    desc: 'Creating responsive, fast, and engaging user interfaces — from landing pages to complex dashboards with a strong focus on usability, accessibility, and smooth user experiences.',
+    icon: `<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>`,
+    accent: 'accent',
+  },
+  {
+    number: '02',
+    title: 'Backend & API Development',
+    desc: 'Building scalable server-side systems, secure authentication flows, and well-structured APIs with clean architecture and reliable performance.',
+    icon: `<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>`,
+    accent: 'accent-alt',
+  },
+  {
+    number: '03',
+    title: 'Full-Stack Web Apps',
+    desc: 'Delivering complete web applications from planning and development to deployment, ensuring seamless integration across every part of the system.',
+    icon: `<rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>`,
+    accent: 'accent',
+  },
+  {
+    number: '04',
+    title: 'UI/UX Implementation',
+    desc: 'Transforming design concepts into polished interfaces with thoughtful interactions, responsive layouts, and attention to visual details.',
+    icon: `<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>`,
+    accent: 'accent-alt',
+  },
+];
+
+const whyMe = [
+  {
+    number: '01',
+    title: 'Performance first',
+    desc: 'Optimized interfaces with clean rendering and smooth interactions.',
+    accent: 'accent',
+  },
+  {
+    number: '02',
+    title: 'Scalable architecture',
+    desc: 'Structure that stays maintainable as the project grows.',
+    accent: 'accent-alt',
+  },
+  {
+    number: '03',
+    title: 'Clear communication',
+    desc: 'Frequent updates, transparency, and collaborative workflow.',
+    accent: 'accent',
+  },
+  {
+    number: '04',
+    title: 'Long-term thinking',
+    desc: 'Building solutions that remain useful beyond the first launch.',
+    accent: 'accent-alt',
+  },
+];
+---
+
+<section id="services" class="py-16 md:py-32 border-t border-[var(--border)] scroll-mt-20 relative overflow-hidden">
+  <div class="deco-corner-tl hidden lg:block" aria-hidden="true"></div>
+  <div class="deco-corner-br hidden lg:block" aria-hidden="true"></div>
+
+  <div class="absolute top-8 right-8 pointer-events-none hidden lg:block" aria-hidden="true">
+    <div class="relative w-20 h-20">
+      <div class="deco-ring" style="width:80px;height:80px;animation-duration:20s;opacity:0.18;position:absolute;top:0;left:0;"></div>
+      <div class="deco-ring-rev" style="width:52px;height:52px;animation-duration:14s;opacity:0.14;position:absolute;top:14px;left:14px;"></div>
+    </div>
+  </div>
+
+  <div class="deco-diamond hidden lg:block" style="width:8px;height:8px;top:4.5rem;left:calc(50% + 320px);animation-delay:0.6s;" aria-hidden="true"></div>
+  <div class="deco-pulse-dot hidden lg:block" style="width:3px;height:3px;top:7rem;left:calc(50% + 340px);animation-delay:1.4s;" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 md:mb-20">
+      <div class="eyebrow mb-5">Services</div>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div class="block">
+          <h2 class="section-heading text-[var(--text-primary)] max-w-lg">
+            What I can <span class="gradient-text">do for you.</span>
+          </h2>
+          
+        </div>
+        <div class="flex flex-col gap-4 md:items-end">
+          <p class="text-base md:text-lg text-[var(--text-primary)]/55 max-w-sm leading-relaxed md:text-right">
+            From concept to deployment — I cover the full spectrum of modern web development.
+          </p>
+          <a
+            href="/contact"
+            class="interactive inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:text-[var(--accent-alt)] transition-colors duration-200 group w-fit"
+          >
+            Start a project
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M1 7h12M7 1l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+      {services.map((service) => (
+        <div class="service-card p-7 lg:p-8 flex flex-col gap-6">
+          <div class="flex items-start justify-between gap-4">
+            <div class={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+              service.accent === 'accent'
+                ? 'bg-[var(--accent)]/10 border border-[var(--accent)]/20'
+                : 'bg-[var(--accent-alt)]/10 border border-[var(--accent-alt)]/20'
+            }`}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                class={service.accent === 'accent' ? 'text-[var(--accent)]' : 'text-[var(--accent-alt)]'}
+                set:html={service.icon}
+              />
+            </div>
+            <span class="text-2xl md:text-3xl font-black font-mono-technical text-[var(--text-primary)]/8 select-none leading-none mt-1">
+              {service.number}
+            </span>
+          </div>
+          <div class="flex flex-col gap-3">
+            <h3 class="text-md md:text-xl font-bold text-[var(--text-primary)] leading-snug tracking-tight">{service.title}</h3>
+            <p class="text-sm md:text-base text-[var(--text-primary)]/60 leading-relaxed">{service.desc}</p>
+          </div>
+          
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-10 text-sm text-[var(--text-primary)]/40 text-center font-mono-technical">
+      // Need something custom? <a href="/contact" class="text-[var(--accent)] hover:text-[var(--accent-alt)] transition-colors">Let's talk.</a>
+    </p>
+
+    <div class="mt-16 md:mt-24 relative">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
+        <div>
+          <div class="eyebrow mb-3">Why me</div>
+          <h2 class="section-heading font-bold text-[var(--text-primary)]">
+            More than just <span class="gradient-text">writing code.</span>
+          </h2>
+        </div>
+        <p class="max-w-sm text-[var(--text-primary)]/55 text-sm md:text-base leading-relaxed">
+          I focus on building products that are not only functional,
+          but maintainable, scalable, and pleasant to use.
+        </p>
+      </div>
+      <div class="relative mt-16 md:mt-24">
+        <div class="hidden lg:block absolute top-6 left-0 w-full h-px bg-[var(--border)]"
+          aria-hidden="true" ></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {whyMe.map((item) => (
+            <div class="relative">
+              <div class={`w-12 h-12 rounded-full border flex items-center justify-center mb-5 relative z-10 ${
+                item.accent === 'accent'
+                  ? 'border-[var(--accent)]/20 bg-[var(--accent)]/10'
+                  : 'border-[var(--accent-alt)]/20 bg-[var(--accent-alt)]/10'
+              }`}>
+                <span class={`text-sm font-mono-technical ${
+                  item.accent === 'accent'
+                    ? 'text-[var(--accent)]'
+                    : 'text-[var(--accent-alt)]'
+                }`}>
+                  {item.number}
+                </span>
+              </div>
+              <h4 class="text-lg font-semibold text-[var(--text-primary)] mb-2">
+                {item.title}
+              </h4>
+              <p class="text-md text-[var(--text-primary)]/55 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

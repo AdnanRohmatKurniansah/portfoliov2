@@ -1,0 +1,157 @@
+---
+import '../styles/globals.css';
+import CustomCursor from '../components/ui/CustomCursor.jsx';
+import ScrollProgress from '../components/ui/ScrollProgress.jsx';
+import BackToTop from '../components/ui/BackToTop.jsx';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import LoadingScreen from '../components/layout/LoadingScreen.jsx';
+
+const {
+  title,
+  description = "Adnan Rohmat Kurniansah — Fullstack Developer building scalable web applications.",
+  image,
+  sideBarActiveItemID,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <meta
+      name="keywords"
+      content="
+      Adnan Rohmat Kurniansah,
+      Adnan Developer,
+      Freelance Fullstack Developer,
+      Fullstack Developer Indonesia,
+      Web Developer Indonesia,
+      Freelance Web Developer,
+      React Developer,
+      Next.js Developer,
+      Astro Developer,
+      Node.js Developer,
+      PHP Developer,
+      JavaScript Developer,
+      Frontend Developer Indonesia,
+      Backend Developer Indonesia,
+      Remote Fullstack Developer,
+      Portfolio Fullstack Developer,
+      Jasa Pembuatan Website,
+      Jasa Website Indonesia,
+      Freelance Programmer,
+      Website Developer Yogyakarta,
+      Software Engineer Indonesia,
+      Web Application Developer,
+      MERN Stack Developer,
+      API Developer,
+      UI UX Developer
+      "
+    />
+
+    <meta name="author" content="Adnan Rohmat Kurniansah" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://arksitec.vercel.app" />
+    {image && <meta property="og:image" content={image} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {image && <meta name="twitter:image" content={image} />}
+
+    <link rel="canonical" href="https://arksitec.vercel.app" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Adnan Rohmat Kurniansah",
+      jobTitle: "Fullstack Developer",
+      description: "Freelance Fullstack Developer specializing in React, Next.js, Node.js, PHP and scalable web applications.",
+      url: "https://arksitec.vercel.app",
+      sameAs: [
+        "https://github.com/https://github.com/AdnanRohmatKurniansah",
+        "https://www.linkedin.com/in/adnan-rohmat-kurniansah-41576827a/",
+        "https://www.instagram.com/adn.rk_/"
+      ],
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "PHP",
+        "JavaScript",
+        "Web Development",
+        "API Development",
+        "Fullstack Development"
+      ]
+    })} />
+
+    <script is:inline>
+      (function () {
+        const saved = typeof localStorage !== 'undefined' && localStorage.getItem('theme');
+        const theme = (saved === 'light' || saved === 'dark')
+          ? saved
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+
+  <body class="bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased">
+    <CustomCursor client:load />
+    <LoadingScreen client:load />
+    <ScrollProgress client:load />
+    <BackToTop client:load />
+
+    <div class="relative min-h-screen flex flex-col">
+      <Navbar activeItem={sideBarActiveItemID} />
+
+      <main class="flex-grow pt-[72px]">
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+
+    <script>
+      import Lenis from 'lenis';
+
+      const lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.8,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const id = this.getAttribute('href');
+          if (!id) return;
+          const target = document.querySelector(id);
+          if (target) lenis.scrollTo(target, { offset: -90 });
+        });
+      });
+    </script>
+  </body>
+</html>

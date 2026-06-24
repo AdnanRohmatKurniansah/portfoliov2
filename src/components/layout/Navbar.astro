@@ -1,0 +1,161 @@
+---
+import DarkModeToggle from '../ui/DarkModeToggle.jsx';
+
+interface Props {
+  activeItem?: string;
+}
+
+const { activeItem } = Astro.props;
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'CV', href: '/cv' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 border-b transition-all duration-400"
+  style="border-color: var(--border);"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div id="header-inner" class="flex items-center justify-between h-[72px] md:h-[80px] transition-all duration-400">
+      <a href="/" class="focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 rounded"
+        aria-label="Arksitec — home">
+        <span class="text-2xl md:text-3xl  font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity duration-200 select-none">
+          Ark<span class="text-[var(--text-primary)]/50">sitec.</span>
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={`relative px-4 py-2 rounded-lg text-md font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 ${
+              activeItem === link.name.toLowerCase()
+                ? 'text-[var(--text-primary)]'
+                : 'text-[var(--text-primary)]/50 hover:text-[var(--text-primary)]'
+            }`}
+            data-nav-link
+          >
+            {link.name}
+            {activeItem === link.name.toLowerCase() && (
+              <span
+                class="absolute bottom-0 left-3 right-3 h-px bg-[var(--text-primary)] rounded-full"
+                aria-hidden="true"
+              />
+            )}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <DarkModeToggle client:load />
+        <a href="/contact"
+          class="interactive hidden md:inline-flex items-center gap-1.5 px-5 py-3 rounded-lg text-sm font-semibold bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-85 transition-all duration-200 hover:-translate-y-px active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50">
+          Hire Me
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1 7h12M7 1l6 6-6 6"/>
+          </svg>
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-[5px] rounded-lg border border-[var(--border)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 transition-all duration-200"
+        >
+          <span class="w-[17px] h-[1.5px] bg-[var(--text-primary)] transition-all duration-300 origin-center" id="hamburger-top"></span>
+          <span class="w-[17px] h-[1.5px] bg-[var(--text-primary)] transition-all duration-300" id="hamburger-mid"></span>
+          <span class="w-[17px] h-[1.5px] bg-[var(--text-primary)] transition-all duration-300 origin-center" id="hamburger-bot"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed inset-x-0 bg-[var(--bg-primary)]/98 backdrop-blur-xl border-b border-[var(--border)] -translate-y-full opacity-0 pointer-events-none transition-all duration-300 ease-out"
+    style="top: 72px;"
+  >
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-0.5">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`group relative px-4 py-2 rounded-lg text-sm font-medium overflow-hidden
+          transition-all duration-300
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50
+          ${
+            activeItem === link.name.toLowerCase()
+              ? 'text-[var(--text-primary)]'
+              : 'text-[var(--text-primary)]/50 hover:text-[var(--text-primary)]'
+          }`}
+          data-nav-link
+        >
+          <span class="relative z-10">
+            {link.name}
+          </span>
+        </a>
+      ))}
+      <div class="pt-3 mt-1">
+        <a href="/contact"
+          class="interactive flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[var(--text-primary)] text-[var(--bg-primary)] transition-all duration-200"
+          data-mobile-nav-link>
+          Hire Me
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const headerInner = document.getElementById('header-inner');
+
+  const handleScroll = () => {
+    if (window.scrollY > 10) {
+      header?.classList.add('bg-[var(--bg-primary)]/90', 'backdrop-blur-xl');
+      headerInner?.classList.replace('h-[72px]', 'h-14');
+    } else {
+      header?.classList.remove('bg-[var(--bg-primary)]/90', 'backdrop-blur-xl');
+      headerInner?.classList.replace('h-14', 'h-[72px]');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const hTop = document.getElementById('hamburger-top');
+  const hMid = document.getElementById('hamburger-mid');
+  const hBot = document.getElementById('hamburger-bot');
+  let isOpen = false;
+
+  const toggleMenu = () => {
+    isOpen = !isOpen;
+    btn?.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) {
+      menu?.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      menu?.classList.add('translate-y-0', 'opacity-100');
+      hTop?.classList.add('rotate-45', 'translate-y-[6.5px]');
+      hMid?.classList.add('opacity-0');
+      hBot?.classList.add('-rotate-45', '-translate-y-[6.5px]');
+      document.body.style.overflow = 'hidden';
+    } else {
+      menu?.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+      menu?.classList.remove('translate-y-0', 'opacity-100');
+      hTop?.classList.remove('rotate-45', 'translate-y-[6.5px]');
+      hMid?.classList.remove('opacity-0');
+      hBot?.classList.remove('-rotate-45', '-translate-y-[6.5px]');
+      document.body.style.overflow = '';
+    }
+  };
+
+  btn?.addEventListener('click', toggleMenu);
+  document.querySelectorAll('[data-mobile-nav-link]').forEach((link) => {
+    link.addEventListener('click', () => { if (isOpen) toggleMenu(); });
+  });
+</script>

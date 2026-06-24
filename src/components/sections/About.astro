@@ -1,0 +1,167 @@
+---
+import StatsCounter from '../ui/StatsCounter.jsx';
+import Timeline from '../ui/Timeline';
+
+const techGroups = [
+  {
+    label: "Frontend",
+    color: "accent",
+    items: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Astro",
+      "Tailwind CSS",
+      "Bootstrap",
+    ],
+  },
+  {
+    label: "Backend",
+    color: "accent-alt",
+    items: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "PHP",
+      "Laravel",
+      "CodeIgniter",
+      "Go",
+    ],
+  },
+  {
+    label: "Database",
+    color: "blue",
+    items: [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Supabase",
+    ],
+  },
+  {
+    label: "Tools",
+    color: "gray",
+    items: [
+      "Git",
+      "GitHub",
+      "Prisma",
+      "JWT",
+      "Jest",
+      "Postman",
+      "ESLint",
+      "Prettier",
+      "VS Code",
+      "Vercel",
+    ],
+  },
+];
+---
+
+<section id="about" class="py-16 md:py-32 border-t border-[var(--border)] scroll-mt-20 relative ">
+  <div class="deco-corner-tl hidden lg:block" aria-hidden="true"></div>
+  <div class="deco-corner-br hidden lg:block" aria-hidden="true"></div>
+
+  <div class="absolute hidden lg:block pointer-events-none" style="top:3.5rem;right:2.5rem;" aria-hidden="true">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="opacity:0.18;animation:deco-spin-cw 24s linear infinite;">
+      <polygon points="18,2 32,9 32,27 18,34 4,27 4,9" stroke="var(--accent)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+  <div class="absolute hidden lg:block pointer-events-none" style="top:4.5rem;right:3.2rem;" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="opacity:0.14;animation:deco-spin-ccw 16s linear infinite;">
+      <polygon points="9,1 16,4.5 16,13.5 9,17 2,13.5 2,4.5" stroke="var(--accent-alt)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="deco-pulse-dot hidden lg:block" style="width:3px;height:3px;bottom:5rem;left:2.5rem;animation-delay:0.8s;" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 md:mb-20">
+      <div class="eyebrow mb-4">About</div>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <h2 class="section-heading text-[var(--text-primary)] max-w-xl">
+          Building things that work,<br />
+          <span class="gradient-text">and work well.</span>
+        </h2>
+        <p class="text-base md:text-lg text-[var(--text-primary)]/55 max-w-sm leading-relaxed md:text-right">
+          A software engineer focused on fullstack web development — from pixel-perfect UIs to scalable backend systems.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-start">
+      <div class="lg:col-span-7 flex flex-col gap-10 md:sticky md:top-24">
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div class="relative flex-shrink-0">
+            <div class="w-20 h-20 rounded-2xl overflow-hidden border border-[var(--border)]">
+              <img src="/profile.jpeg" alt="Adnan Rohmat Kurniansah" class="w-full h-full object-cover object-top select-none" loading="lazy" />
+            </div>
+            <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[var(--bg-surface)] border border-[var(--border)] flex items-center justify-center">
+              <span class="availability-dot w-2 h-2 rounded-full bg-emerald-400"></span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h3 class="text-xl font-bold text-[var(--text-primary)]">Adnan Rohmat Kurniansah</h3>
+            <p class="text-sm font-mono-technical text-[var(--accent)]">Fullstack Developer / Software Engineer</p>
+            <div class="flex items-center gap-2 mt-1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--text-primary)]/40" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span class="text-xs text-[var(--text-primary)]/45">Yogyakarta, Indonesia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4 text-base md:text-lg text-[var(--text-primary)]/70 leading-relaxed max-w-2xl">
+          <p>I'm a software engineer with hands-on experience building web applications across the full stack. I've worked on real client projects — from e-commerce platforms and content management systems to community-driven tools and interactive maps.</p>
+          <p>I care about writing code that's maintainable, interfaces that are intuitive, and systems that hold up under real-world conditions. Currently studying at UPN "Veteran" Yogyakarta while actively working on projects.</p>
+        </div>
+
+        <StatsCounter client:visible />
+
+        <div class="card-base p-6 flex flex-col gap-5">
+          <div class="flex flex-col gap-1">
+            <h3 class="text-base font-semibold text-[var(--text-primary)]">Tech Stack</h3>
+            <p class="text-sm text-[var(--text-primary)]/40">Technologies I work with regularly</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            {techGroups.map((group) => (
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2">
+                  <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${group.color === 'accent' ? 'bg-[var(--accent)]' : group.color === 'accent-alt' ? 'bg-[var(--accent-alt)]' : group.color === 'blue' ? 'bg-blue-400' : 'bg-[var(--text-primary)]/30'}`}></span>
+                  <span class="text-xs font-semibold uppercase tracking-widest text-[var(--text-primary)]/40 font-mono-technical">{group.label}</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pl-3.5">
+                  {group.items.map((tech) => (
+                    <span class="text-xs px-2.5 py-1 rounded-md border border-[var(--border)] text-[var(--text-primary)]/65 bg-[var(--bg-surface)]/40 font-mono-technical hover:border-[var(--text-primary)]/20 hover:text-[var(--text-primary)]/80 transition-all duration-150">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-5 flex flex-col gap-5">
+        <div class="flex flex-col gap-6">
+          <h3 class="text-lg font-semibold text-[var(--text-primary)]">Experience & education</h3>
+          <Timeline client:visible />
+        </div>
+        <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 flex items-start gap-4">
+          <div class="flex-shrink-0 mt-0.5">
+            <span class="availability-dot inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+          </div>
+          <div class="flex flex-col gap-2">
+            <p class="text-base font-semibold text-emerald-400">Open to work</p>
+            <p class="text-sm text-[var(--text-primary)]/55 leading-relaxed">Available for freelance projects, part-time roles, and collaborations. Fast response, reliable delivery.</p>
+            <a href="/contact" class="interactive mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors duration-200 group">
+              Get in touch
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true"><path d="M1 7h12M7 1l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
